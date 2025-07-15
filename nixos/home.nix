@@ -8,7 +8,6 @@
 	./home/llm.nix
 	./home/programs.nix 
 	./home/userpkgs.nix
-	#./home/config/emacs.nix
 	./home/config/fastfetch.nix
 	#./home/config/fish.nix
 	#./home/config/hyprland/dunst.nix
