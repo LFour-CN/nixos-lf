@@ -3,8 +3,11 @@
   home.file.".config/hypr/hyprland.conf".text = ''
     
   # ----------------------------------------------------- 
-  # Animations # name "Dynamic" 
+  # Hyprland config --- LFour-CN@Github
+  # Created at July 4, 2025
   # -----------------------------------------------------
+
+  # Windows animations
     animations {     
       enabled = true     
       bezier = wind, 0.05, 0.9, 0.1, 1.05     
@@ -28,20 +31,16 @@
     exec-once = dunst
     exec-once = fcitx5
     exec-once = kitty
-    exec-once = swww init
-    exec-once = ~/.config/swww/swww-daemon.sh init
-
-  # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
     
     # SUPER key
     $mainMod = SUPER
     
     # Actions
     bind = $mainMod, Z, exec, kitty # Open Kitty
-    bind = $mainMod, D, exec, emacs # Emacs Editor
+    bind = $mainMod, E, exec, emacs # Emacs Editor
     bind = $mainMod, X, killactive # Close current window
     bind = $mainMod SHIFT, Q, exit # Exit Hyprland
-    bind = $mainMod, E, exec, nemo # Opens the filemanager
+    bind = $mainMod, D, exec, nemo # Opens the filemanager
     bind = $mainMod, T, togglefloating # Toggle between tiling and floating window
     bind = $mainMod, F, fullscreen # Open the window in fullscreen
     bind = $mainMod, SPACE, exec, wofi --show run # Open wofi
@@ -100,7 +99,6 @@
     bindm = $mainMod, mouse:272, movewindow # Move window
     bindm = $mainMod, mouse:273, resizewindow # Resize window
 
-  # See https://wiki.hyprland.org/Configuring/Variables/ for more
     decoration {
       rounding = 9
       blur {
@@ -115,18 +113,12 @@
       active_opacity = 0.9
       inactive_opacity = 0.7
       fullscreen_opacity = 1
-    }
-
-  # ----------------------------------------------------- 
-  # Environment Variables
-  # name: "Default"
-  # ----------------------------------------------------- 
+    } 
 
   # XDG Desktop Portal
     env = XDG_CURRENT_DESKTOP,Hyprland
     env = XDG_SESSION_TYPE,wayland
     env = XDG_SESSION_DESKTOP,Hyprland
-    env = XCURSOR_SIZE,6
     env = QT_QPA_PLATFORM,wayland
 
   # QT
@@ -138,11 +130,14 @@
   # GTK
     env = GDK_SCALE,1
 
+  # Electron
+    env = ELECTRON_OZONE_PLATFORM_HINT,auto
+
   # Mozilla
     env = MOZ_ENABLE_WAYLAND,1
 
   # Set the cursor size for xcursor
-    env = XCURSOR_SIZE,6
+    env = XCURSOR_SIZE,16
 
   # Disable appimage launcher by default
     env = APPIMAGELAUNCHER_DISABLE,1
@@ -151,34 +146,34 @@
     env = OZONE_PLATFORM,wayland
 
   # For KVM virtual machines
-    # env = WLR_NO_HARDWARE_CURSORS, 1
-    # env = WLR_RENDERER_ALLOW_SOFTWARE, 1
+    env = WLR_NO_HARDWARE_CURSORS, 1
+    env = WLR_RENDERER_ALLOW_SOFTWARE, 1
 
-  # NVIDIA https://wiki.hyprland.org/Nvidia/
-    # env = LIBVA_DRIVER_NAME,nvidia
-    # env = GBM_BACKEND,nvidia-drm
-    # env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-    # env = __GL_VRR_ALLOWED,1
-    # env = WLR_DRM_NO_ATOMIC,1
+  # NVIDIA
+    env = LIBVA_DRIVER_NAME,nvidia
+    env = GBM_BACKEND,nvidia-drm
+    env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+    env = __GL_VRR_ALLOWED,1
+    env = WLR_DRM_NO_ATOMIC,1
+
+  # windows rules
+    windowrulev2 = float, title:QQ
+    windowrulev2 = float, title:pavucontrol
+    windowrulev2 = float, title:imv
 
   # general
     general {
-        #sensitivity=1.0 # for mouse cursor
-        gaps_in=0
-        gaps_out=0
+        gaps_in=1
+        gaps_out=5
         border_size=1
         col.active_border = rgba(248,248,255,0.2)
         col.inactive_border = rgba(00000000)
-        #col.active_border=rgba(cba6f7ff) rgba(89b4faff) rgba(94e2d5ff) 10deg
-        #col.inactive_border=0xff45475a
     }
 
-  # See https://wiki.hyprland.org/Configuring/Variables/ for more
     gestures {
       workspace_swipe = true
     }
 
-  # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
     input {
       kb_layout = us
       kb_variant =
@@ -192,25 +187,20 @@
       sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
     }
     dwindle {
-      # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
       pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
       preserve_split = true # you probably want this
     }
     master {
-      # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
       # new_status = master
     }
 
-  # See https://wiki.hyprland.org/Configuring/Variables/ for more
     misc {
       disable_hyprland_logo = true
       disable_splash_rendering = true
     }
 
-  # See https://wiki.hyprland.org/Configuring/Monitors/
-    #monitor= HDMI-A-1,1920x1080@100,0x0,1
+    monitor= HDMI-A-1,1920x1080@100,0x0,1
     monitor=eDP-1,1920x1080@144,auto,1
 
   '';
 }
-
