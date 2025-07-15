@@ -34,7 +34,7 @@
             }
             ###### Hardware Configuration #####################
             ./system/hardware/amdgpu.nix
-            ./system/hardware/sound.nix
+            ./system/hardware/audio.nix
             ./system/hardware/bluetooth.nix
             ./system/hardware/camera.nix
             ./system/hardware/partition.nix
