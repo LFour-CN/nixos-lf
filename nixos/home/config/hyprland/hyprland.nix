@@ -1,13 +1,10 @@
 { config, pkgs, ... }:
 {
   home.file.".config/hypr/hyprland.conf".text = ''
-    
   # ----------------------------------------------------- 
   # Hyprland config --- LFour-CN@Github
-  # Created at July 4, 2025
+  # Created on July 4, 2025
   # -----------------------------------------------------
-
-  # Windows animations
     animations {     
       enabled = true     
       bezier = wind, 0.05, 0.9, 0.1, 1.05     
@@ -17,7 +14,7 @@
       animation = windows, 1, 6, wind, slide     
       animation = windowsIn, 1, 6, winIn, slide     
       animation = windowsOut, 1, 5, winOut, slide     
-      animation = windowsMove, 1, 5, wind, slide     
+      animation = windowsMove, 1, 5, wind, slide
       animation = border, 1, 1, liner     
       animation = borderangle, 1, 30, liner, loop     
       animation = fade, 1, 10, default     
@@ -25,16 +22,22 @@
     }
 
   # Execute your favorite apps at launch
-    exec-once = waybar
-    exec-once = hypridle
-    #exec-once = hyprpaper
     exec-once = dunst
     exec-once = fcitx5
+    exec-once = hypridle
+    exec-once = hyprpaper
     exec-once = kitty
+    exec-once = waybar
+    #exec-once = swww-daemon
+    #exec-once = swww image /home/lfour/.config/hypr/wallpapers/1.jpg
     
     # SUPER key
     $mainMod = SUPER
-    
+    $shiftMod=SUPER_SHIFT
+    $altMod=SUPER_ALT
+    $alt=ALT
+    $shift=SHIFT
+
     # Actions
     bind = $mainMod, Z, exec, kitty # Open Kitty
     bind = $mainMod, E, exec, emacs # Emacs Editor
@@ -44,18 +47,14 @@
     bind = $mainMod, T, togglefloating # Toggle between tiling and floating window
     bind = $mainMod, F, fullscreen # Open the window in fullscreen
     bind = $mainMod, SPACE, exec, wofi --show run # Open wofi
-    bind = $mainMod, P, pseudo, # dwindle
-    bind = $mainMod, J, togglesplit, # dwindle
-    bind = $mainMod SHIFT, B, exec, ~/.config/ml4w/scripts/reload-waybar.sh # Reload Waybar
-    bind = $mainMod SHIFT, W, exec, ~/.config/ml4w/scripts/reload-hyprpaper.sh # Reload hyprpaper after a changing the wallpaper
-    bind = $mainMod, B, exec, chromium #start brower
-    bind = $mainMod, S, exec, hyprshot -m region #hyprshot
-    bind = $mainMod, L, exec, hyprlock   #hyprlock
-    bind = $mainMod, C, exec, code   # Open vscode
-    bind = $mainMod, W, exec, waybar   # Open waybar
-    bind = $mainMod, Q, exec, pkill -9 waybar   # Quit waybar
-    bind = $mainMod SHIFT, L, exec, wlogout -b 4 #wlogout
-    bind = $mainMod, G, exec, ghostty
+    bind = $mainMod, P, pseudo, # Dwindle
+    bind = $mainMod, J, togglesplit, # Dwindle
+    bind = $mainMod, B, exec, firefox #Start brower
+    bind = $mainMod, L, exec, hyprlock   #Hyprlock
+    bind = $mainMod, C, exec, vscode   # Open vscode
+    bind = $mainMod, S, exec, hyprshot -m region    # ScreenShot
+    bind = $mainMod SHIFT, L, exec, wlogout -b 4    # Wlogout
+
     
     # Move focus with mainMod + arrow keys
     bind = $mainMod, left, movefocus, l # Move focus left
@@ -108,12 +107,12 @@
         new_optimizations = on
         ignore_opacity = true
         xray = true
-        blurls = waybar
+        blurls = waybar, 0
       }
       active_opacity = 0.9
       inactive_opacity = 0.7
       fullscreen_opacity = 1
-    } 
+    }
 
   # XDG Desktop Portal
     env = XDG_CURRENT_DESKTOP,Hyprland
@@ -136,8 +135,10 @@
   # Mozilla
     env = MOZ_ENABLE_WAYLAND,1
 
-  # Set the cursor size for xcursor
+  # Cursor
+    env = XCURSOR_THEME,Neuro-Sama
     env = XCURSOR_SIZE,16
+    env = HYPRCURSOR_SIZE,16
 
   # Disable appimage launcher by default
     env = APPIMAGELAUNCHER_DISABLE,1
@@ -146,20 +147,27 @@
     env = OZONE_PLATFORM,wayland
 
   # For KVM virtual machines
-    env = WLR_NO_HARDWARE_CURSORS, 1
-    env = WLR_RENDERER_ALLOW_SOFTWARE, 1
+    # env = WLR_NO_HARDWARE_CURSORS, 1
+    # env = WLR_RENDERER_ALLOW_SOFTWARE, 1
 
-  # NVIDIA
+  # NVIDIA https://wiki.hyprland.org/Nvidia/
+    env = NVD_BACKEND,direct
     env = LIBVA_DRIVER_NAME,nvidia
     env = GBM_BACKEND,nvidia-drm
     env = __GLX_VENDOR_LIBRARY_NAME,nvidia
     env = __GL_VRR_ALLOWED,1
     env = WLR_DRM_NO_ATOMIC,1
+    env = WLR_NO_HARDWARE_CURSORS,1
 
   # windows rules
-    windowrulev2 = float, title:QQ
-    windowrulev2 = float, title:pavucontrol
-    windowrulev2 = float, title:imv
+  windowrulev2 = float, title:QQ
+  windowrulev2 = float, title:pavucontrol
+  windowrulev2 = float, title:imv
+
+  # unscale XWayland
+  xwayland {
+    force_zero_scaling = true
+  }
 
   # general
     general {
@@ -187,8 +195,8 @@
       sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
     }
     dwindle {
-      pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-      preserve_split = true # you probably want this
+      pseudotile = true # master switch for pseudotiling.
+      preserve_split = true
     }
     master {
       # new_status = master
@@ -200,7 +208,6 @@
     }
 
     monitor= HDMI-A-1,1920x1080@100,0x0,1
-    monitor=eDP-1,1920x1080@144,auto,1
-
-  '';
+    monitor= eDP-1,1920x1080@144,auto,1
+'';
 }
