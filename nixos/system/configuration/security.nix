@@ -141,9 +141,9 @@
   #};
 
   #programs.firejail = {
- #   enable = true;
- #   wrappedBinaries = {
- #    mpv = {
+  #  enable = true;
+  #  wrappedBinaries = {
+  #   mpv = {
   #     executable = "${lib.getBin pkgs.mpv}/bin/mpv";
   #     profile = "${pkgs.firejail}/etc/firejail/mpv.profile";
   #   };
@@ -152,21 +152,21 @@
   #     profile = "${pkgs.firejail}/etc/firejail/imv.profile";
   #   };
   #  };
- #};
+  #};
 
   environment.systemPackages = with pkgs; [
-    #vulnix       #scan command: vulnix --system
-    #clamav       #scan command: sudo freshclam; clamscan [options] [file/directory/-]
-   # chkrootkit   #scan command: sudo chkrootkit
-   # pass-wayland
-   # pass2csv
-    #passExtensions.pass-tomb
-    #passExtensions.pass-update
-    #passExtensions.pass-otp
-    #passExtensions.pass-import
-   # passExtensions.pass-audit
-   # tomb
-  #  pwgen
-  #  pwgen-secure
+    # vulnix       #scan command: vulnix --system
+    # clamav       #scan command: sudo freshclam; clamscan [options] [file/directory/-]
+    # chkrootkit   #scan command: sudo chkrootkit
+    # pass-wayland
+    # pass2csv
+    # passExtensions.pass-tomb
+    # passExtensions.pass-update
+    # passExtensions.pass-otp
+    # passExtensions.pass-import
+    # passExtensions.pass-audit
+    # tomb
+    # pwgen
+    # pwgen-secure
   ];
 }
