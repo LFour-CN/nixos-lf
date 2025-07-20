@@ -1,29 +1,46 @@
 {pkgs, ...}:
 {
   home.packages = with pkgs;[
-	
-	# Daily applications
-	firefox
-	qq
-	wechat-uos
-	qqmusic
-	strawberry
-	kitty
-	hmcl
+	# Daily Applications
 	bilibili
-	wpsoffice-cn
-	libreoffice
+	firefox
+	#kitty
+	#libreoffice
+	lenovo-legion
 	motrix
+	qq
+	qqmusic
+	scrcpy
+	sillytavern
+	vlc
+	wechat-uos
+	wpsoffice-cn
 
-	# Dev
+	# Ventoy
+	#ventoy-full
+	#ventoy-full-gtk
+
+	# Network Proxy
+	clash-rs
+	clash-verge-rev
+	v2ray
+	v2rayn
+
+	# C/C++
 	arduino-ide
+	#jetbrains.clion
 	stm32cubemx
-	jetbrains.pycharm-professional
-	jetbrains.idea-ultimate
-	jetbrains.clion
+	
+	# Java
+	#jetbrains.idea-ultimate
+
+	# Python
+	#jetbrains.pycharm-professional
+
+	# Qt
+	qtcreator
 
 	# Game
 	hmcl
-	mgba
   ];
 }
