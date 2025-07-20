@@ -2,18 +2,16 @@
 {
 
   # Enable OpenGL
-  hardware.graphics = {
-    enable = true;
-  };
+  hardware.graphics.enable = true;
   
    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
     
    hardware.nvidia.prime = {
   	
-  	        offload = {
-		    enable = false;
-		    enableOffloadCmd = false;
-		};
+  	        #offload = {
+		    #enable = false;
+		    #enableOffloadCmd = false;
+		#};
 		# Make sure to use the correct Bus ID values for your system!
 		amdgpuBusId = "PCI:6:0:0";
 		nvidiaBusId = "PCI:1:0:0";
@@ -30,8 +28,8 @@
   hardware.nvidia.nvidiaSettings = true;
   
    #If you encounter the problem of booting to text mode you might try adding the Nvidia kernel module manually with this
-    #boot.initrd.kernelModules = [ "nvidia" ];
-    #boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+   #boot.initrd.kernelModules = [ "nvidia" ];
+   #boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
     
     
   #disable nouveau
@@ -39,7 +37,4 @@
     
    #Screen Tearing Issues
    hardware.nvidia.forceFullCompositionPipeline = true;
-     
-     
 }
-
