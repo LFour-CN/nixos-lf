@@ -2,24 +2,25 @@
 {
   home.file.".config/waybar/style.css".text = ''
 * {
-  	/* `otf-font-awesome` is required to be installed for icons */
-	  font-family: "Maple Mono NF";
+	  font-family: "Maple Mono NF CN";
 	  font-weight: 600;
 	  font-size: 12px;
-
-  	border-radius: 10px;
+  	  border-radius: 10px;
 	  text-shadow: none;
-
 	  transition-property: background;
 	  transition-duration: 0.2s;
   }
 
   window#waybar {
-	  background-color: transparent;
+	 background-color: rgba(0, 0, 0, 0);
+	 border: none;
+	 min-height: 30px;
+  	 padding: 0 10px; 
+  	 font-size: 12px; 
   }
 
   window#waybar.hidden {
-	  opacity: 0.2;
+	  background-color: rgba(0, 0, 0, 0);
   }
 
   #workspaces {
@@ -65,6 +66,7 @@
   #pulseaudio,
   #tray,
   #mode,
+
   #window {
 	  margin-top: 6px;
 	  padding: 0 12px;
@@ -84,6 +86,7 @@
   #clock {
 	  background-color: #eefff1;
 	  color: #000000;
+	  padding: 0 8px; 
   }
 
   #cpu {
@@ -114,7 +117,7 @@
 
   #battery.charging,
   #battery.plugged {
-  	margin-top: 6px;
+  	  margin-top: 6px;
 	  background-color: #7cfc00;
 	  color: #000000;
   }
@@ -154,5 +157,5 @@
 	  background-color: #cbecff;
 	  color: #000000;
   }  
-  '';
+'';
 }
