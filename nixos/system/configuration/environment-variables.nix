@@ -19,4 +19,3 @@
     environment.etc."bin/bash".source = "/run/current-system/sw/bin/bash";
 
 }
-
