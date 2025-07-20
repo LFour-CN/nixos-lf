@@ -9,7 +9,6 @@
 	./home/programs.nix 
 	./home/userpkgs.nix
 	./home/config/fastfetch.nix
-	#./home/config/fish.nix
 	#./home/config/hyprland/dunst.nix
 	#./home/config/hyprland/hypridle.nix
 	#./home/config/hyprland/hyprland.nix
