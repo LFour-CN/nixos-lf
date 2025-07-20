@@ -2,47 +2,44 @@
 {
   environment.systemPackages = with pkgs; [
     	###############################
-	vim
-   	wget
-	neovim
-	git
-	fish
-	unzip
-	unrar
         btop
 	fastfetch
-	###############################
-	gnome-tweaks
+	fish
+	git
+	neovim
+	unrar
+	unzip
+	vim
+   	wget
         electron
-	###############################
+	gnome-tweaks
         ffmpeg-full
         ncmpcpp
-        ###############################
+	###############################
 	blueman
 	bluez # Bluetooth support
         bluez-tools # Bluetooth tools
+	exfat
+	ntfs3g
         ###############################
+        alsa-utils
+        bear
+        coreutils-full
+        dhcpcd
+	direnv
+        fuse
 	glib-networking
         klibcShrunk
-        bear
-	lshw
         lsd
-        tree
+	lshw
         pciutils
-	usbutils
-        fuse
-        dhcpcd
-        dhcping
+        tree
         sl
-        mu
-        msmtp
-        brightnessctl
-        alsa-utils
-        coreutils-full
+	usbutils
         ###### C & C++ ################
+        cmake
         gcc_multi 
         gdb 
-        cmake
         gnumake
         llvmPackages_latest.clang-tools
         llvmPackages_latest.lldb
@@ -51,35 +48,35 @@
         llvmPackages_latest.clang
 
         ###### JAVA ##################
+	jre21_minimal
         zulu24
         ###### Embedded Development ######
         #
-        gcc-arm-embedded
-        platformio
         arduino-cli 
+        dotnet-sdk
+        dotnet-runtime
+        gcc-arm-embedded
         openocd
-        pkgs.dotnet-sdk
-        pkgs.dotnet-runtime
+        platformio
         #
         ### STM32 ###
         #
-        stlink
         stm32flash
         stm32loader
-        stlink-tool
+        stlink
         stlink-gui
+        stlink-tool
         #
         ### ESP32 ###
         #
-        esptool
         espflash
+        esptool
         #
 	###### MySQL ##################
-        mariadb
-        mysql-shell
+        #mariadb
+        #mysql-shell
         ###### Python #################
         python3Full 
-        python312Packages.pyqt6
         ###### NodeJS #################
         nodejs
         ###### Rust ###################
@@ -87,7 +84,6 @@
         rustc
         ###### GO ####################
 	go
-        direnv
         ###### END ###################
   ];
 }
