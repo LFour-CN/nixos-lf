@@ -5,95 +5,95 @@
   #nixpkgs.config.segger-jlink.acceptLicense = true;
 
   # Enable nftables
-  networking.nftables = {
-  enable = false;
-  ruleset = ''
-   table inet filter {
-     chain input {
-       type filter hook input priority 0; policy drop;
+  #networking.nftables = {
+  #enable = false;
+  #ruleset = ''
+   	#table inet filter {
+     		#chain input {
+       			#type filter hook input priority 0; policy drop;
 
-       # Allow loopback traffic
-       iifname "lo" accept
+       			# Allow loopback traffic
+       			#iifname "lo" accept
 
-        # Allow established and related connections
-          ct state {established, related} accept
+        		# Allow established and related connections
+          		#ct state {established, related} accept
 
-        # Allow SSH, DNS, HTTP, HTTPS
-        tcp dport {22, 53, 80, 443} accept
-        udp dport {53, 67} accept
+        		# Allow SSH, DNS, HTTP, HTTPS
+        		#tcp dport {22, 53, 80, 443} accept
+        		#udp dport {53, 67} accept
 
-        # Allow custom UDP ports
-        udp dport 4000-4007 accept
-        udp dport 8000-8010 accept
+        		# Allow custom UDP ports
+        		#udp dport 4000-4007 accept
+        		#udp dport 8000-8010 accept
 
-	# Hotspot
-	udp dport {67,68,53} accept
-        tcp dport 53 accept
+			# Hotspot
+			#udp dport {67,68,53} accept
+        		#tcp dport 53 accept
 
-        # Log and drop all other traffic
-        counter log prefix "INPUT_DROP: " group 0
-        drop
-     }
+        		# Log and drop all other traffic
+        		#counter log prefix "INPUT_DROP: " group 0
+        		#drop
+     		#}
 
-   chain output {
-       type filter hook output priority 0; policy accept;
-       }
+   		#chain output {
+       			#type filter hook output priority 0; policy accept;
+       		#}
 
-   chain forward {
-       type filter hook forward priority 0; policy drop;
+   		#chain forward {
+       			#type filter hook forward priority 0; policy drop;
 
-       # Allow forwarding for established and related connections
-        ct state {established, related} accept
+       			# Allow forwarding for established and related connections
+        		#ct state {established, related} accept
 
-       # Allow forwarding from virbr0 (KVM bridge) to external interface
-       iifname "virbr0" accept
+       			# Allow forwarding from virbr0 (KVM bridge) to external interface
+       			#iifname "virbr0" accept
 
-       # Log and drop all other forwarded traffic
-       counter log prefix "FORWARD_DROP: " group 0
-       drop
-     }
-   }
+       			# Log and drop all other forwarded traffic
+       			#counter log prefix "FORWARD_DROP: " group 0
+       			#drop
+     		#}
+   	#}
 
- table ip nat {
-      chain PREROUTING {
-        type nat hook prerouting priority -100; policy accept;
-        # Add any necessary PREROUTING rules here
-       }
+ 	#table ip nat {
+      		#chain PREROUTING {
+        		#type nat hook prerouting priority -100; policy accept;
+        		# Add any necessary PREROUTING rules here
+       		#}
 
-    chain POSTROUTING {
-        type nat hook postrouting priority 100; policy accept;
-        # Assuming enp4s0 is your external interface
-        oifname "enp4s0" masquerade
-       }
-   }
- '';
-};
+    		#chain POSTROUTING {
+        		#type nat hook postrouting priority 100; policy accept;
+        		# Assuming enp4s0 is your external interface
+        		#oifname "enp4s0" masquerade
+       		#}
+   	#}
+    #'';
+  #};
 
   # Enable Security Services
-  users.users.root.hashedPassword = "!";
-  security.tpm2 = {
-    enable = true;
-    pkcs11.enable = true;
-    tctiEnvironment.enable = true;
-  };
-  security.apparmor = {
-    enable = true;
-    packages = with pkgs; [
-      apparmor-utils
-      apparmor-profiles
-    ];
-  };
-  services.fail2ban.enable = true;
-  security.pam.services.hyprlock = {};
-  security.polkit.enable = true;
-  programs.browserpass.enable = true;
+  #users.users.root.hashedPassword = "!";
+  #security.tpm2 = {
+    #enable = true;
+    #pkcs11.enable = true;
+    #tctiEnvironment.enable = true;
+  #};
+  #security.apparmor = {
+    #enable = true;
+    #packages = with pkgs; [
+      #apparmor-utils
+      #apparmor-profiles
+    #];
+  #};
+  #services.fail2ban.enable = true;
+  #security.pam.services.hyprlock = {};
+  #security.polkit.enable = true;
+  #programs.browserpass.enable = true;
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
-    services.avahi = {
-      enable = true;
-      nssmdns4 = true;
-   };
+  #services.printing.enable = true;
+    #services.avahi = {
+      #enable = true;
+      #nssmdns4 = true;
+   #};
 
   # USB Automounting
   services.gvfs.enable = true;
@@ -170,4 +170,3 @@
   #  pwgen-secure
   ];
 }
-
