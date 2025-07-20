@@ -4,11 +4,11 @@
     {
       "layer": "top",
       "position": "top", 
-      "height": 1, 
-      "spacing": 6,
-      "modules-left": ["hyprland/workspaces","idle_inhibitor","backlight","tray"],
+      "height": 30, 
+      "spacing": 5,
+      "modules-left": ["hyprland/workspaces","idle_inhibitor", "backlight", "tray"],
       "modules-center": ["hyprland/window"],
-      "modules-right": ["pulseaudio", "memory", "cpu", "temperature", "battery","clock"],
+      "modules-right": ["pulseaudio", "memory", "cpu", "temperature", "battery", "clock"],
     
       "wlr/workspaces": {
           "format": "{icon}",
@@ -16,11 +16,6 @@
           "on-click": "activate",
           "on-scroll-up": "hyprctl dispatch workspace e+1",
           "on-scroll-down": "hyprctl dispatch workspace e-1"
-      },
-    
-      "backlight": {
-          "format": "  {percent}% {icon}  ",
-          "format-icons": ["",""]
       },
     
       "battery": {
@@ -36,7 +31,7 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": [  ""  ,  ""  ,   ""  ,  ""  ,  ""  ]
+        "format-icons": [  " "  ,  " "  ,   " "  ,  " "  ,  " "  ]
       },
       "battery#bat2": {
          "bat": "BAT2"
@@ -54,15 +49,34 @@
 			      "default": ""
           },
         "persistent-workspaces": {
-             "*": 9
+             "*": 10
         }
+      },
+
+      "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "     ",
+                "deactivated": "     "
+            }
+      },
+
+      "backlight": {
+          //"device": "amd_backlight",
+          "format": " {percent}%{icon} ",
+          "format-icons": ["  ", "  "]
       },
 
       "tray": {
         "icon-size": 16,
         "spacing": 10
       },
-      
+     
+	"hyprland/window": {
+    	"format": "{:.50}",
+    	"tooltip": true
+	},
+
       // Clock
       "clock": {
          "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -72,59 +86,41 @@
     
       "cpu": {
          "interval": 1,
-         "format": " {usage}%",
+         "format": "  {usage}%",
          "tooltip": false
       },
+
+      "temperature": {
+		      // "thermal-zone": 2,
+		      // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		      // "critical-threshold": 80,
+		      // "format-critical": "{temperatureC}C ",
+		      "format": " {temperatureC}°C  "
+	    },
 
       "memory": {
          "interval": 1,
-         "format": " {used}G",
+         "format": "  {used}G",
          "tooltip": false
       },
       
-      "network": {
-         "interval": 1,
-         "format-wifi": " {essid} ({signalStrength}%)",
-         "format-ethernet": "\uf796 {bandwidthUpBits} {bandwidthDownBits}",
-         "format-linked": " {ifname} (No IP)",
-         "format-disconnected": "! Disconnected",
-         "tooltip-format": " {ifname} {ipaddr}/{cidr} via {gwaddr}",
-         "format-alt": "{ifname}: {ipaddr}/{cidr}"
-      },
-    
-      "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "     ",
-            "deactivated": "     "
-        }
-      },
- 
-    	"temperature": {
-        "interval": 1,
-        "tooltip": false,
-        "format": "   {temperatureC}°C  ",
-    	},
-
-
       "pulseaudio": {
          "scroll-step": 5,
          "format": "{icon} {volume}%",
-         "format-muted": "",
+         "format-muted": "  ",
          "format-bluetooth": "{icon} {volume}%",
-         "format-bluetooth-muted": " {icon}",
+         "format-bluetooth-muted": "  {icon}",
          "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": [" ", " ", "  "]
          },
         "on-click-right": "pavucontrol"
       }
-  }
-  '';
+   }
+'';
 }
-
