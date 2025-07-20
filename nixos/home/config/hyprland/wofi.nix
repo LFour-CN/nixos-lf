@@ -1,51 +1,64 @@
 { ... }:
 {
   home.file.".config/wofi/style.css".text = ''
-    * {
-        font-family: JetBrainsMono, SpaceMono;
-        color: #e5e9f0;
-        /* background: transparent; */
-    }
+* {
+    font-family: Maple Mono NF CN;
+    color: #e5e9f0;
+}
 
-    #window {
-        background: rgba(41, 46, 66, 0.5);
-        margin: auto;
-        padding: 10px;
-        border-radius: 1px;
-        border: 1px solid #16a187;
-        background-color: #151515;
-        opacity: 1.0;
-        width: 100px;
-        height: 100px;
-        max-width: 100%;
-        max-height: 100%;
-    }
+#window {
+    background: rgba(173, 216, 230, 0.15);
+    margin: auto;
+    padding: 15px;
+    border-radius: 12px;
+    /*border: 1px solid #87CEEB;*/
+    box-shadow: 
+        0 6px 16px rgba(135, 206, 235, 0.2),
+	inset 0 0 12px rgba(173, 216, 230, 0.3);
+    max-width: 90%;
+    transition: all 0.3s ease;
+}
 
-    #input {
-        padding: 10px;
-        margin-bottom: 5px;
-        border-radius: 5px;
-    }
+#input {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: rgba(11, 97, 194, 0.7); /*可改，这个是搜索栏颜色*/
+    border: 1px solid #ADD8E6; 
+    color: #e5e9f0;
+    font-size: 1.1em;
+}
 
-    #outer-box {
-        padding: 10px;
-    }
+#outer-box {
+    padding: 10px;
+}
 
-    #img {
-        margin-right: 5px;
-    }
+#img {
+    margin-right: 10px;
+    filter: invert(85%) sepia(30%) saturate(300%);
+}
 
-    #entry {
-        padding: 10px;
-        border-radius: 10px;
-    }
+#entry {
+    padding: 12px;
+    border-radius: 8px;           
+    margin-bottom: 8px;
+    transition: 
+        background 0.25s ease, 
+        transform 0.2s ease; 
+}
 
-    #entry:selected {
-        background-color: #16a187;
-    }
+#entry:selected {
+    background: linear-gradient(
+        to right, 
+        rgba(135, 206, 235, 0.7), 
+    );
+    transform: translateX(5px); 
+    box-shadow: 0 4px 8px rgba(70, 130, 180, 0.4);
+}
 
-    #text {
-        margin: 2px;
-    }  
-  '';
+#text {
+    margin: 3px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 30, 0.6);
+}
+'';
 }
