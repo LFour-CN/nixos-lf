@@ -15,18 +15,9 @@
     shellAliases = {
       li = "lsd --human-readable --all";
       tt = "tree";
-      ls = "ls";
-      F = "ranger";
-      update = "cd /etc/nixos && sudo nixos-rebuild switch --flake .#";
+      update = "cd /etc/nixos && sudo nixos-rebuild switch --flake .#lfour";
       garbage = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
       flake = "cd /etc/nixos && sudo nix flake update";
-      rfbb = "rfkill block bluetooth";
-      rfub = "rfkill unblock bluetooth";
-      blon = "bluetooth on";
-      blof = "bluetooth off";
-      blctl = "bluetoothctl";
-      vol = "alsamixer";
-      ed = "emacs -nw";
     };
   };
 
@@ -51,4 +42,3 @@
   # Nix ld 
   programs.nix-ld.enable = true;
 }
-
