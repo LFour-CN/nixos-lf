@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   # Enable flake
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -14,7 +13,7 @@
   environment.enableDebugInfo = true;
 
   # Set your time zone.
-  time.timeZone = "Asia/Shanghai";
+  time.timeZone = "America/New_York";
 
   # Set fonts
   fonts.fontDir.enable = true;
